@@ -81,9 +81,16 @@ ready-to-paste fix list for agents that can't read reports, like Lovable, Bolt a
 <p align="center"><img src="assets/install.svg" alt="npx --yes github:agentpolice/police install" width="100%"></p>
 
 > [!TIP]
-> **Claude Code, one step:** `/plugin install agent-police --marketplace agentpolice/police`, then type `/agent-police:police` in your project.
+> **Claude Code:** type these yourself in the session, then `/agent-police:police` in your project:
+>
+> ```
+> /plugin marketplace add agentpolice/police
+> /plugin install agent-police@police
+> ```
+>
+> The plugin carries agent-police inside it: nothing is downloaded during the install.
 
-**Anywhere else**, inside your project's git folder:
+**Anywhere else**, run this yourself in a terminal, inside your project's git folder:
 
 ```
 npx --yes github:agentpolice/police install

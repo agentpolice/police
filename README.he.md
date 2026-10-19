@@ -62,9 +62,16 @@
 <p align="center"><img src="assets/install.svg" alt="npx --yes github:agentpolice/police install" width="100%"></p>
 
 > [!TIP]
-> **ב-Claude Code, צעד אחד:** `/plugin install agent-police --marketplace agentpolice/police`, ואז מקלידים בפרויקט `/agent-police:police`.
+> **ב-Claude Code:** מקלידים בעצמכם בסשן, ואז `/agent-police:police` בפרויקט:
+>
+> ```
+> /plugin marketplace add agentpolice/police
+> /plugin install agent-police@police
+> ```
+>
+> הפלאגין מביא את agent-police בתוכו: שום דבר לא מורד מהאינטרנט בזמן ההתקנה.
 
-**בכל מקום אחר**, בתוך תיקיית ה-git של הפרויקט:
+**בכל מקום אחר**, מריצים בעצמכם בטרמינל, בתוך תיקיית ה-git של הפרויקט:
 
 ```
 npx --yes github:agentpolice/police install
