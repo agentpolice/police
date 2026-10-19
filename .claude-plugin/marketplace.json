@@ -1,0 +1,14 @@
+{
+  "name": "police",
+  "owner": {
+    "name": "police"
+  },
+  "description": "agent-police: the AI agent is not done until the machine says DONE.",
+  "plugins": [
+    {
+      "name": "agent-police",
+      "source": "./plugin",
+      "description": "One click: the agent is not done until the machine says DONE."
+    }
+  ]
+}

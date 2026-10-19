@@ -1,0 +1,33 @@
+{
+  "name": "agent-police",
+  "version": "1.0.0-rc.1",
+  "description": "A deterministic verdict on work done by AI coding agents: catches weakened tests, hidden asserts, secrets, bypassed hooks, scope creep and judge tampering — one command, DONE or NOT DONE.",
+  "type": "module",
+  "bin": {
+    "agent-police": "bin/agent-police.mjs"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "LICENSE"
+  ],
+  "os": [
+    "linux",
+    "darwin",
+    "win32"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "ai-agents",
+    "code-review",
+    "verification",
+    "ci",
+    "guardrails",
+    "claude",
+    "cursor",
+    "copilot"
+  ],
+  "license": "UNLICENSED"
+}
