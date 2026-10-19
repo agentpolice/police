@@ -112,7 +112,8 @@ npx --yes github:agentpolice/police install
 | `node .agent-police/bin/agent-police.mjs check` | the verdict on the current work: DONE / NOT DONE, and why |
 | `node .agent-police/bin/agent-police.mjs prove` | judge finished work it never saw (a teammate's PR, a Lovable export): honest · gamed · failed |
 | `node .agent-police/bin/agent-police.mjs lesson add "<rule>" --forbid "<pattern>"` | turn a fixed mistake into a rule: if it ever comes back, the verdict fails |
-| `node .agent-police/bin/agent-police.mjs ci` | a GitHub workflow: every pull request judged by the engine and config from the base branch, not the PR's own copy |
+| `node .agent-police/bin/agent-police.mjs ci` | a GitHub workflow (`--gitlab` for GitLab): every pull / merge request judged by the engine and config from the base branch, not the request's own copy |
+| `node .agent-police/bin/agent-police.mjs digest --send` | what the police caught, in plain words — to your phone (Telegram or any webhook). A stuck agent pings you too. `--html` for a one-page dashboard |
 | `node .agent-police/bin/agent-police.mjs handoff` | the plain-language report for you |
 | `node .agent-police/bin/agent-police.mjs license` | trial / license status |
 | `node .agent-police/bin/agent-police.mjs uninstall` | remove it |
@@ -137,7 +138,7 @@ If it only started flaking after the change, that's on the agent.
 
 <details><summary><b>Which agents does it work with?</b></summary>
 
-Claude Code (hooks, one-click plugin), and any agent that reads project instructions: Cursor, GitHub Copilot, Gemini, Codex.
+Claude Code, Cursor, Codex and GitHub Copilot get the full live police (hooks: the agent is sent back until DONE). Any other agent that reads project instructions (Gemini, Aider, Windsurf…) is held by the instructions and the git hooks.
 For Lovable, Bolt and Replit, the report includes a ready-to-paste fix list.
 </details>
 

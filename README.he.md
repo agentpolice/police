@@ -86,6 +86,13 @@ npx --yes github:agentpolice/police install
 > ההתקנה מוסיפה תיקייה `.agent-police/` והוראות קצרות לסוכנים. תעשו להם commit, כך שכל עותק של הפרויקט מוגן.
 > הכול רץ מקומית, בלי אינטרנט. הקוד שלכם לא יוצא מהמחשב.
 
+**עובד עם:** Claude Code, ‏Cursor, ‏Codex ו-GitHub Copilot מקבלים את השוטר המלא — הבקשה הופכת לחוזה-משימה והסוכן מוחזר לעבודה עד DONE. כל סוכן אחר שקורא הוראות-פרויקט (Gemini, ‏Aider, ‏Windsurf) מוחזק בהוראות ובחסימת ה-commit.
+
+**עוד פקודות:**
+- `node .agent-police/bin/agent-police.mjs lesson add "<כלל>" --forbid "<תבנית>"` — טעות שתוקנה הופכת לכלל: אם תחזור, הפסק נכשל.
+- `node .agent-police/bin/agent-police.mjs digest --send --lang he` — מה השוטר תפס, במילים פשוטות, לטלפון (טלגרם או webhook). סוכן שנתקע מקפיץ לכם הודעה.
+- `node .agent-police/bin/agent-police.mjs ci` — workflow ל-GitHub (או `--gitlab`): כל PR נשפט עם השופט מהענף המוגן.
+
 ## שאלות נפוצות
 
 <details><summary><b>זה מאט את הסוכן?</b></summary>

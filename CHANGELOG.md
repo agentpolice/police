@@ -2,6 +2,10 @@
 
 ## 1.1
 
+- **Four agents, one police:** Claude Code, Cursor, Codex and GitHub Copilot (CLI and cloud agent) — the request becomes the task contract, a stop hook sends the agent back until DONE, the judge's files cannot be read. Installed by the same one command.
+- **Scope with no configuration:** when the request names its files, a change to any other file is caught.
+- **The digest:** what the police caught, in plain words, to your phone (Telegram or a webhook) and as a dashboard; a stuck agent pings you.
+- **GitLab** merge requests get the same trusted judge. **Windows:** CRLF checkouts no longer read as tampering; hooks run in PowerShell.
 - **The same mistake never twice:** `lesson add` turns a fixed mistake into an enforced rule (a forbidden pattern or a regression test). Lessons only accumulate; removing or weakening one is caught, and its mistake is still enforced. Unsafe patterns (ReDoS) are refused.
 - **Stuck loops stop:** the same failure again after the way out ⇒ the agent stops and asks you, instead of retrying the same fix.
 - **Nothing passes silently:** changed files the checks cannot read (submodules, symlinks, LFS pointers, binaries) are named and fail the verdict.
