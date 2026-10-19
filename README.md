@@ -1,9 +1,15 @@
-<p align="center"><img src="assets/banner.png" alt="agent-police" width="100%"></p>
+<p align="center"><img src="assets/hero.svg" alt="agent-police: your AI agent said done. Was it?" width="100%"></p>
 
-<p align="center"><b>The AI coding agent is not done until the machine says DONE.</b><br>
-Claude Code · Cursor · GitHub Copilot · Gemini · Lovable · Bolt · Replit</p>
+<p align="center">
+<img src="https://img.shields.io/badge/Claude%20Code-one--click%20plugin-2f7dff?style=for-the-badge&labelColor=0b1018" alt="Claude Code one-click plugin">
+<img src="https://img.shields.io/badge/runs-100%25%20local-3dff8e?style=for-the-badge&labelColor=0b1018" alt="runs 100% local">
+<img src="https://img.shields.io/badge/trial-2%20days%20free-ffb020?style=for-the-badge&labelColor=0b1018" alt="2-day free trial">
+</p>
+<p align="center">
+<img src="https://img.shields.io/badge/works%20with-Cursor%20·%20Copilot%20·%20Gemini%20·%20Lovable%20·%20Bolt-5aa0ff?style=flat-square&labelColor=0b1018" alt="works with Cursor, Copilot, Gemini, Lovable, Bolt">
+</p>
 
-<p align="center"><img src="assets/demo.gif" alt="agent-police catching an agent that faked done" width="640"></p>
+<h3 align="center">The AI coding agent is not done until the machine says DONE.</h3>
 
 ---
 
@@ -12,7 +18,9 @@ Claude Code · Cursor · GitHub Copilot · Gemini · Lovable · Bolt · Replit</
 Coding agents are fast. They also say *"✓ all tests pass, ready to ship"* when they aren't. They delete the failing test,
 leave a stub, swallow the error, or paste a secret into the code. Then someone has to check, fix, re-run and check again.
 
-**agent-police checks so you don't have to.** It sits next to the agent and doesn't let it say "done" until the work is real.
+**agent-police checks so you don't have to.**
+
+<p align="center"><img src="assets/how.svg" alt="How it works: the agent works, agent-police judges, DONE goes to you, NOT DONE goes back with the fix list" width="100%"></p>
 
 ## What it catches
 
@@ -23,26 +31,34 @@ leave a stub, swallow the error, or paste a secret into the code. Then someone h
 | swallowed an error (`catch {}`) | ❌ caught |
 | planted a secret, a key or personal data in the code | ❌ caught |
 | said "done" while the test suite is red | ❌ caught |
-| guessed a number or a rule you never gave it | ❓ asks you instead |
 | changed code with no test that proves it | ❌ caught |
-| made a stable test flaky | ❌ caught (an already-flaky test is flagged, not blamed) |
+| made a stable test flaky | ❌ caught · an already-flaky test is flagged, not blamed |
+| guessed a number or a rule you never gave it | ❓ asks you instead |
 
-When something isn't done, you get a plain report: **done · not done and why · what I need from you**, plus a
-ready-to-paste fix list for agents that can't read reports (Lovable, Bolt, Replit).
+When something isn't done you get a plain report (**done · not done and why · what I need from you**), plus a
+ready-to-paste fix list for agents that can't read reports, like Lovable, Bolt and Replit.
 
 ## The numbers
 
-A 50-task benchmark, the same tickets with and without agent-police:
+<p align="center"><img src="assets/numbers.svg" alt="Benchmark: top model without police versus low-cost model with police" width="100%"></p>
+
+<details>
+<summary>The full table</summary>
 
 | | Top model, no police | Low-cost model **+ police** |
 |---|---|---|
 | Correct | 36 / 48 | **35 / 48** |
 | Tasks left with a failing suite | 39 | **13** |
 | Personal data left in code | 3 | **0** |
-| On a failure: said so, and why | 59% / 33% | **100% / 100%** |
-| Cost | $10.09 | **$0.69** |
+| On a failure: said so / said why | 59% / 33% | **100% / 100%** |
+| Cost for 50 tasks | $10.09 | **$0.69** |
 
-The cheap model with the police matched the top model, at **1/15 of the cost**, with **3× less broken work**.
+50 tasks, run one after another in one session per arm, with the same answers to the agent's questions.
+</details>
+
+## See it in action
+
+<p align="center"><img src="assets/demo.gif" alt="agent-police catching an agent that faked done" width="640"></p>
 
 ## Install
 
@@ -61,7 +77,7 @@ npx --yes github:agentpolice/police install
 ```
 
 The install adds a `.agent-police/` folder and short instructions for your agents. Commit them, so every clone is guarded.
-It runs locally and offline. Nothing about your code leaves your machine.
+It runs locally and offline. Your code never leaves your machine.
 
 ## Use
 
@@ -75,14 +91,34 @@ It runs locally and offline. Nothing about your code leaves your machine.
 
 ## FAQ
 
-**Does it slow the agent down?** Under half a second per check. The full test run happens once, when the agent says it's done.
+<details><summary><b>Does it slow the agent down?</b></summary>
 
-**Does it block my work after the trial?** Never. It stops checking and tells you how to get a license.
+Under half a second per check. The full test run happens once, when the agent says it's done.
+</details>
 
-**Can the agent turn it off?** No. It can't edit the checker or even read it, and the tests that decide "done" can't be changed by the agent.
+<details><summary><b>Can the agent turn it off or trick it?</b></summary>
+
+It can't edit the checker or even read it, and the tests that decide "done" are out of its reach.
+</details>
+
+<details><summary><b>What about flaky tests?</b></summary>
+
+A failing test is re-run. If it was flaky before the agent touched anything, the agent isn't blamed and the report flags the test.
+If it only started flaking after the change, that's on the agent.
+</details>
+
+<details><summary><b>Does it block my work after the trial?</b></summary>
+
+Never. It stops checking and tells you how to get a license.
+</details>
+
+<details><summary><b>Does my code leave my machine?</b></summary>
+
+No. Everything runs locally, offline.
+</details>
 
 ## Trial and license
 
 Two days free from the first run. For a license: **064105@gmail.com**
 
-Proprietary software. See [LICENSE](LICENSE).
+<sub>Proprietary software. See [LICENSE](LICENSE).</sub>

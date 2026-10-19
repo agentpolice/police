@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="520" viewBox="0 0 1280 520" role="img" aria-label="The numbers: top model without police versus low-cost model with police">
+<defs><linearGradient id="bl" x1="0" x2="1"><stop offset="0" stop-color="#2f7dff"/><stop offset="1" stop-color="#5aa0ff"/></linearGradient></defs>
+<style>@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}@keyframes fade{from{opacity:0}to{opacity:1}}rect[style*=grow]{transform-box:fill-box;transform-origin:left center}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+<rect width="1280" height="520" rx="24" fill="#070a10"/>
+<text x="40" y="54" fill="#e9eef6" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="26" font-weight="800">50 real tasks, run in sequence</text>
+<rect x="760" y="34" width="16" height="16" rx="4" fill="#5b6675"/><text x="784" y="47" fill="#9aa5b4" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15">Top model, no police</text>
+<rect x="960" y="34" width="16" height="16" rx="4" fill="#2f7dff"/><text x="984" y="47" fill="#cfe0ff" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="700">Low-cost model + police</text>
+<text x="40" y="116" fill="#e9eef6" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19" font-weight="700">Correct (of 48)</text>
+<text x="40" y="138" fill="#6b7686" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13">higher is better</text>
+<rect x="330" y="96" width="640" height="22" rx="6" fill="#ffffff" fill-opacity=".04"/>
+<rect x="330" y="96" width="480.0" height="22" rx="6" fill="#5b6675" style="animation:grow 1.2s 0.00s cubic-bezier(.2,.8,.2,1) both"/>
+<text x="820.0" y="113" fill="#9aa5b4" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="16" font-weight="700" style="animation:fade .4s 0.90s both">36</text>
+<rect x="330" y="124" width="640" height="22" rx="6" fill="#ffffff" fill-opacity=".04"/>
+<rect x="330" y="124" width="466.7" height="22" rx="6" fill="url(#bl)" style="animation:grow 1.2s 0.15s cubic-bezier(.2,.8,.2,1) both"/>
+<text x="806.7" y="141" fill="#7fb0ff" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="16" font-weight="800" style="animation:fade .4s 1.05s both">35</text><text x="40" y="214" fill="#e9eef6" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19" font-weight="700">Tasks left broken (of 50)</text>
+<text x="40" y="236" fill="#6b7686" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13">lower is better</text>
+<rect x="330" y="194" width="640" height="22" rx="6" fill="#ffffff" fill-opacity=".04"/>
+<rect x="330" y="194" width="499.2" height="22" rx="6" fill="#5b6675" style="animation:grow 1.2s 0.25s cubic-bezier(.2,.8,.2,1) both"/>
+<text x="839.2" y="211" fill="#9aa5b4" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="16" font-weight="700" style="animation:fade .4s 1.15s both">39</text>
+<rect x="330" y="222" width="640" height="22" rx="6" fill="#ffffff" fill-opacity=".04"/>
+<rect x="330" y="222" width="166.4" height="22" rx="6" fill="url(#bl)" style="animation:grow 1.2s 0.40s cubic-bezier(.2,.8,.2,1) both"/>
+<text x="506.4" y="239" fill="#7fb0ff" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="16" font-weight="800" style="animation:fade .4s 1.30s both">13</text><text x="40" y="312" fill="#e9eef6" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19" font-weight="700">On a failure: said why</text>
+<text x="40" y="334" fill="#6b7686" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13">higher is better</text>
+<rect x="330" y="292" width="640" height="22" rx="6" fill="#ffffff" fill-opacity=".04"/>
+<rect x="330" y="292" width="211.2" height="22" rx="6" fill="#5b6675" style="animation:grow 1.2s 0.50s cubic-bezier(.2,.8,.2,1) both"/>
+<text x="551.2" y="309" fill="#9aa5b4" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="16" font-weight="700" style="animation:fade .4s 1.40s both">33%</text>
+<rect x="330" y="320" width="640" height="22" rx="6" fill="#ffffff" fill-opacity=".04"/>
+<rect x="330" y="320" width="640.0" height="22" rx="6" fill="url(#bl)" style="animation:grow 1.2s 0.65s cubic-bezier(.2,.8,.2,1) both"/>
+<text x="980.0" y="337" fill="#7fb0ff" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="16" font-weight="800" style="animation:fade .4s 1.55s both">100%</text><text x="40" y="410" fill="#e9eef6" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19" font-weight="700">Cost for 50 tasks</text>
+<text x="40" y="432" fill="#6b7686" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13">lower is better</text>
+<rect x="330" y="390" width="640" height="22" rx="6" fill="#ffffff" fill-opacity=".04"/>
+<rect x="330" y="390" width="640.0" height="22" rx="6" fill="#5b6675" style="animation:grow 1.2s 0.75s cubic-bezier(.2,.8,.2,1) both"/>
+<text x="980.0" y="407" fill="#9aa5b4" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="16" font-weight="700" style="animation:fade .4s 1.65s both">$10.09</text>
+<rect x="330" y="418" width="640" height="22" rx="6" fill="#ffffff" fill-opacity=".04"/>
+<rect x="330" y="418" width="43.8" height="22" rx="6" fill="url(#bl)" style="animation:grow 1.2s 0.90s cubic-bezier(.2,.8,.2,1) both"/>
+<text x="383.8" y="435" fill="#7fb0ff" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" font-size="16" font-weight="800" style="animation:fade .4s 1.80s both">$0.69</text>
+<text x="40" y="500" fill="#6b7686" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14">Same tickets, same order, same answers. The low-cost model with the police matched the top model at 1/15 of the cost.</text>
+</svg>

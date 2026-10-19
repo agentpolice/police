@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="340" viewBox="0 0 1280 340" role="img" aria-label="How it works: the agent works, agent-police judges, done goes to you, not done goes back to the agent">
+<style>.flow{stroke-dasharray:10 10;animation:dash 1s linear infinite}@keyframes dash{to{stroke-dashoffset:-20}}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#5aa0ff"/></marker>
+<marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3dff8e"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#ff4d5e"/></marker></defs>
+<rect width="1280" height="340" rx="24" fill="#070a10"/>
+<rect x="40" y="60" width="300" height="130" rx="16" fill="#0b1018" stroke="#2b3442" stroke-width="2"/>
+<text x="190.0" y="106" text-anchor="middle" font-size="30">🤖</text>
+<text x="190.0" y="142" text-anchor="middle" fill="#e9eef6" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19" font-weight="800">Your agent works</text>
+<text x="190.0" y="166" text-anchor="middle" fill="#8a96a8" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14">writes code, says “done”</text>
+<rect x="480" y="40" width="320" height="170" rx="16" fill="#0b1018" stroke="#2f7dff" stroke-width="2"/>
+<text x="640.0" y="86" text-anchor="middle" font-size="30">🚔</text>
+<text x="640.0" y="122" text-anchor="middle" fill="#e9eef6" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19" font-weight="800">agent-police judges</text>
+<text x="640.0" y="146" text-anchor="middle" fill="#8a96a8" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14">hidden tests · out of the agent’s reach</text>
+
+<rect x="940" y="60" width="300" height="130" rx="16" fill="#0b1018" stroke="#3dff8e" stroke-width="2"/>
+<text x="1090.0" y="106" text-anchor="middle" font-size="30">✅</text>
+<text x="1090.0" y="142" text-anchor="middle" fill="#e9eef6" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19" font-weight="800">DONE goes to you</text>
+<text x="1090.0" y="166" text-anchor="middle" fill="#8a96a8" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14">with a plain report</text>
+<path class="flow" d="M345 125 L470 125" stroke="#5aa0ff" stroke-width="3" fill="none" marker-end="url(#ar)"/>
+<path class="flow" d="M805 125 L930 125" stroke="#3dff8e" stroke-width="3" fill="none" marker-end="url(#ag)"/>
+<path class="flow" d="M640 215 C640 300, 190 300, 190 198" stroke="#ff4d5e" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+<rect x="265" y="262" width="300" height="34" rx="17" fill="#1e060a" stroke="#ff4d5e"/>
+<text x="415" y="284" text-anchor="middle" fill="#ffc2c8" font-family="ui-sans-serif,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="700">NOT DONE → back, with the exact fix list</text>
+</svg>
