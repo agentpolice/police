@@ -1,3 +1,5 @@
+<p align="right"><b>English</b> · <a href="README.he.md">עברית</a></p>
+
 <p align="center"><img src="assets/hero.svg" alt="agent-police: your AI agent said done. Was it?" width="100%"></p>
 
 <p align="center">
@@ -6,10 +8,12 @@
 <img src="https://img.shields.io/badge/trial-2%20days%20free-ffb020?style=for-the-badge&labelColor=0b1018" alt="2-day free trial">
 </p>
 <p align="center">
-<img src="https://img.shields.io/badge/works%20with-Cursor%20·%20Copilot%20·%20Gemini%20·%20Lovable%20·%20Bolt-5aa0ff?style=flat-square&labelColor=0b1018" alt="works with Cursor, Copilot, Gemini, Lovable, Bolt">
+<img src="https://img.shields.io/badge/works%20with-Cursor%20·%20Copilot%20·%20Gemini%20·%20Lovable%20·%20Bolt%20·%20Replit-5aa0ff?style=flat-square&labelColor=0b1018" alt="works with Cursor, Copilot, Gemini, Lovable, Bolt, Replit">
 </p>
 
 <h3 align="center">The AI coding agent is not done until the machine says DONE.</h3>
+
+<p align="center"><a href="#install"><b>Install</b></a> · <a href="#what-it-catches">What it catches</a> · <a href="#the-numbers">The numbers</a> · <a href="#see-it-in-action">Demo</a> · <a href="#faq">FAQ</a> · <a href="#trial-and-license">License</a></p>
 
 ---
 
@@ -20,9 +24,20 @@ leave a stub, swallow the error, or paste a secret into the code. Then someone h
 
 **agent-police checks so you don't have to.**
 
-<p align="center"><img src="assets/how.svg" alt="How it works: the agent works, agent-police judges, DONE goes to you, NOT DONE goes back with the fix list" width="100%"></p>
+<p align="center"><img src="assets/beforeafter.svg" alt="Without agent-police the faked work reaches production; with agent-police the cheats are caught and fixed" width="100%"></p>
+
+## How it works
+
+<p align="center"><img src="assets/how.svg" alt="The agent works, agent-police judges, DONE goes to you, NOT DONE goes back with the fix list" width="100%"></p>
+
+The checker sits outside the agent's reach: the agent can't edit it, can't read it, and the tests that decide "done" can't be changed by it.
 
 ## What it catches
+
+<p align="center"><img src="assets/catches.svg" alt="What agent-police catches" width="100%"></p>
+
+<details>
+<summary>As a list</summary>
 
 | The agent… | agent-police |
 |---|---|
@@ -34,6 +49,7 @@ leave a stub, swallow the error, or paste a secret into the code. Then someone h
 | changed code with no test that proves it | ❌ caught |
 | made a stable test flaky | ❌ caught · an already-flaky test is flagged, not blamed |
 | guessed a number or a rule you never gave it | ❓ asks you instead |
+</details>
 
 When something isn't done you get a plain report (**done · not done and why · what I need from you**), plus a
 ready-to-paste fix list for agents that can't read reports, like Lovable, Bolt and Replit.
@@ -62,13 +78,10 @@ ready-to-paste fix list for agents that can't read reports, like Lovable, Bolt a
 
 ## Install
 
-**Claude Code**, one step:
+<p align="center"><img src="assets/install.svg" alt="npx --yes github:agentpolice/police install" width="100%"></p>
 
-```
-/plugin install agent-police --marketplace agentpolice/police
-```
-
-then type `/agent-police:police` in your project.
+> [!TIP]
+> **Claude Code, one step:** `/plugin install agent-police --marketplace agentpolice/police`, then type `/agent-police:police` in your project.
 
 **Anywhere else**, inside your project's git folder:
 
@@ -76,8 +89,9 @@ then type `/agent-police:police` in your project.
 npx --yes github:agentpolice/police install
 ```
 
-The install adds a `.agent-police/` folder and short instructions for your agents. Commit them, so every clone is guarded.
-It runs locally and offline. Your code never leaves your machine.
+> [!NOTE]
+> The install adds a `.agent-police/` folder and short instructions for your agents. Commit them, so every clone is guarded.
+> It runs locally and offline. Your code never leaves your machine.
 
 ## Use
 
@@ -107,6 +121,12 @@ A failing test is re-run. If it was flaky before the agent touched anything, the
 If it only started flaking after the change, that's on the agent.
 </details>
 
+<details><summary><b>Which agents does it work with?</b></summary>
+
+Claude Code (hooks, one-click plugin), and any agent that reads project instructions: Cursor, GitHub Copilot, Gemini, Codex.
+For Lovable, Bolt and Replit, the report includes a ready-to-paste fix list.
+</details>
+
 <details><summary><b>Does it block my work after the trial?</b></summary>
 
 Never. It stops checking and tells you how to get a license.
@@ -119,6 +139,8 @@ No. Everything runs locally, offline.
 
 ## Trial and license
 
-Two days free from the first run. For a license: **064105@gmail.com**
+> [!IMPORTANT]
+> Two days free from the first run. For a license: **064105@gmail.com**
 
-<sub>Proprietary software. See [LICENSE](LICENSE).</sub>
+<br>
+<p align="center"><img src="assets/logo.png" alt="" width="72"><br><sub>Built for teams who ship with AI agents. Proprietary software, see <a href="LICENSE">LICENSE</a>.</sub></p>
