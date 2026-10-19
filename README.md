@@ -49,6 +49,11 @@ The checker sits outside the agent's reach: the agent can't edit it, can't read 
 | changed code with no test that proves it | ❌ caught |
 | made a stable test flaky | ❌ caught · an already-flaky test is flagged, not blamed |
 | guessed a number or a rule you never gave it | ❓ asks you instead |
+| made a mistake that was already fixed once | ❌ caught · **the same mistake never twice** |
+| removed or weakened a lesson so the mistake could pass | ❌ caught |
+| hit the same failure again and again | ⛔ stops and asks you · no endless retries |
+| changed files the checks could not read (submodule, symlink, LFS) | ❌ named · never a silent pass |
+| weakened the judge itself (config, engine, lessons) | ❌ caught · in CI the judge comes from your protected branch |
 </details>
 
 When something isn't done you get a plain report (**done · not done and why · what I need from you**), plus a
@@ -106,6 +111,8 @@ npx --yes github:agentpolice/police install
 |---|---|
 | `node .agent-police/bin/agent-police.mjs check` | the verdict on the current work: DONE / NOT DONE, and why |
 | `node .agent-police/bin/agent-police.mjs prove` | judge finished work it never saw (a teammate's PR, a Lovable export): honest · gamed · failed |
+| `node .agent-police/bin/agent-police.mjs lesson add "<rule>" --forbid "<pattern>"` | turn a fixed mistake into a rule: if it ever comes back, the verdict fails |
+| `node .agent-police/bin/agent-police.mjs ci` | a GitHub workflow: every pull request judged by the engine and config from the base branch, not the PR's own copy |
 | `node .agent-police/bin/agent-police.mjs handoff` | the plain-language report for you |
 | `node .agent-police/bin/agent-police.mjs license` | trial / license status |
 | `node .agent-police/bin/agent-police.mjs uninstall` | remove it |

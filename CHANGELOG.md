@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1
+
+- **The same mistake never twice:** `lesson add` turns a fixed mistake into an enforced rule (a forbidden pattern or a regression test). Lessons only accumulate; removing or weakening one is caught, and its mistake is still enforced. Unsafe patterns (ReDoS) are refused.
+- **Stuck loops stop:** the same failure again after the way out ⇒ the agent stops and asks you, instead of retrying the same fix.
+- **Nothing passes silently:** changed files the checks cannot read (submodules, symlinks, LFS pointers, binaries) are named and fail the verdict.
+- **A judge that can be trusted:** `ci` writes a GitHub workflow that judges every pull request with the engine and config from the base branch; a hand-edited engine copy is caught.
+- **verify shows the test count**, and warns when a sub-package's tests may not be reached. Updating agent-police is committable; re-installing changes nothing.
+
 ## 1.0
 
 - **Live guard** for any coding agent: instructions (AGENTS.md, CLAUDE.md, Cursor, Copilot, Gemini), git hooks, and Claude Code hooks.

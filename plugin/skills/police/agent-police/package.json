@@ -1,6 +1,6 @@
 {
   "name": "agent-police",
-  "version": "1.0.0-rc.1",
+  "version": "1.1.0",
   "description": "A deterministic verdict on work done by AI coding agents: catches weakened tests, hidden asserts, secrets, bypassed hooks, scope creep and judge tampering — one command, DONE or NOT DONE.",
   "type": "module",
   "bin": {
