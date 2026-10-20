@@ -118,6 +118,7 @@ npx --yes github:agentpolice/police install
 | `node .agent-police/bin/agent-police.mjs digest --send` | what the police caught, in plain words — to your phone (Telegram or any webhook). A stuck agent pings you too. `--html` for a one-page dashboard |
 | `node .agent-police/bin/agent-police.mjs authority init` | the charter: what the agent may never do, what waits for your approval in the chat (push, publish, deploy, drop table), and an action / time budget |
 | `node .agent-police/bin/agent-police.mjs repeat "<task>" -n 5 --lock base` | the same task 5 times: how consistent is the agent; later `--compare base` shows drift after a model update |
+| `node .agent-police/bin/agent-police.mjs hub publish --to <hub repo>` | every project on one page, with no server: each project sends a summary (counts and names — never code) to one shared git repo; `hub build` there makes a static page, the projects that need you first. CI publishes too when `AGENT_POLICE_HUB` is set |
 | `node .agent-police/bin/agent-police.mjs attest sign` | a signed verdict: proof, later, of who said DONE about exactly which code (`attest verify`) |
 | `node .agent-police/bin/agent-police.mjs handoff` | the plain-language report for you |
 | `node .agent-police/bin/agent-police.mjs license` | trial / license status |

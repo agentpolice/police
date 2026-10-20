@@ -96,6 +96,7 @@ npx --yes github:agentpolice/police install
 - `node .agent-police/bin/agent-police.mjs ci` — workflow ל-GitHub (או `--gitlab`): כל PR נשפט עם השופט מהענף המוגן.
 - `node .agent-police/bin/agent-police.mjs authority init` — אמנת-סמכות: מה אסור לסוכן תמיד, מה מחכה לאישורכם בצ'אט (push, ‏publish, ‏deploy, ‏drop table), ותקרת פעולות וזמן למשימה.
 - `node .agent-police/bin/agent-police.mjs repeat "<משימה>" -n 5 --lock base` — אותה משימה 5 פעמים: כמה הסוכן עקבי; אחר כך `--compare base` מראה סחיפה אחרי עדכון מודל.
+- `node .agent-police/bin/agent-police.mjs hub publish --to <ריפו-מרכזי>` — כל הפרויקטים בדף אחד, בלי שרת: כל פרויקט שולח סיכום (מספרים ושמות — אף פעם לא קוד) לריפו git משותף אחד; `hub build` שם יוצר דף סטטי, הפרויקטים שצריכים אתכם למעלה. גם ה-CI שולח כשמוגדר `AGENT_POLICE_HUB`.
 - `node .agent-police/bin/agent-police.mjs attest sign` — פסק חתום: הוכחה, גם אחר כך, מי אמר DONE על איזה קוד בדיוק (`attest verify`).
 
 ## שאלות נפוצות

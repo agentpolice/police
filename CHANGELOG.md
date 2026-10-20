@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3
+
+- **The hub** (`hub publish` / `hub build`): every project on one page, with no server and no cloud — each project sends a summary (the last verdict, what was caught, stuck agents, actions waiting for approval, lessons, the signed verdict; never code or file content) to one shared git repository, and a static page shows them all, the projects that need you first. Signatures are checked against the hub's trusted signers; a project that stopped reporting is flagged. CI publishes on every pull / merge request when `AGENT_POLICE_HUB` is set; a token in the hub url is never printed.
+
 ## 1.2
 
 - **The authority charter** (`authority init`): forbidden commands never run; irreversible or outward ones (push, publish, deploy, drop table, protected files) wait for the owner's approval in the chat — single use, 30 minutes, the agent cannot forge it; an action / time budget per task. Read from the committed config, in all four agents.
