@@ -54,6 +54,8 @@ The checker sits outside the agent's reach: the agent can't edit it, can't read 
 | hit the same failure again and again | ⛔ stops and asks you · no endless retries |
 | changed files the checks could not read (submodule, symlink, LFS) | ❌ named · never a silent pass |
 | weakened the judge itself (config, engine, lessons) | ❌ caught · in CI the judge comes from your protected branch |
+| ran something irreversible (push, publish, deploy, drop table) | ✋ held until you approve it in the chat · forbidden ones never run |
+| ran away with your budget | ⛔ stopped at the action / time ceiling of the task |
 </details>
 
 When something isn't done you get a plain report (**done · not done and why · what I need from you**), plus a
@@ -114,6 +116,9 @@ npx --yes github:agentpolice/police install
 | `node .agent-police/bin/agent-police.mjs lesson add "<rule>" --forbid "<pattern>"` | turn a fixed mistake into a rule: if it ever comes back, the verdict fails |
 | `node .agent-police/bin/agent-police.mjs ci` | a GitHub workflow (`--gitlab` for GitLab): every pull / merge request judged by the engine and config from the base branch, not the request's own copy |
 | `node .agent-police/bin/agent-police.mjs digest --send` | what the police caught, in plain words — to your phone (Telegram or any webhook). A stuck agent pings you too. `--html` for a one-page dashboard |
+| `node .agent-police/bin/agent-police.mjs authority init` | the charter: what the agent may never do, what waits for your approval in the chat (push, publish, deploy, drop table), and an action / time budget |
+| `node .agent-police/bin/agent-police.mjs repeat "<task>" -n 5 --lock base` | the same task 5 times: how consistent is the agent; later `--compare base` shows drift after a model update |
+| `node .agent-police/bin/agent-police.mjs attest sign` | a signed verdict: proof, later, of who said DONE about exactly which code (`attest verify`) |
 | `node .agent-police/bin/agent-police.mjs handoff` | the plain-language report for you |
 | `node .agent-police/bin/agent-police.mjs license` | trial / license status |
 | `node .agent-police/bin/agent-police.mjs uninstall` | remove it |

@@ -41,6 +41,8 @@
 | נתקע על אותו כישלון שוב ושוב | ⛔ עוצר ושואל אותך · בלי ניסיונות אינסופיים |
 | שינה קבצים שהבדיקות לא יכלו לקרוא (submodule, ‏symlink, ‏LFS) | ❌ מסומן בשם · אף פעם לא עובר בשקט |
 | החליש את השופט עצמו (הגדרות, מנוע, לקחים) | ❌ נתפס · ב-CI השופט מגיע מהענף המוגן שלכם |
+| הריץ משהו בלתי-הפיך (push, ‏publish, ‏deploy, ‏drop table) | ✋ מחכה עד שתאשרו בצ'אט · מה שאסור — לא רץ אף פעם |
+| שרף את התקציב | ⛔ נעצר בתקרת הפעולות / הזמן של המשימה |
 
 כשמשהו לא גמור, מקבלים דוח פשוט (**מה נעשה · מה לא ולמה · מה אני צריך ממך**), ורשימת תיקונים מוכנה להדבקה לסוכנים שלא קוראים דוחות, כמו Lovable, ‏Bolt ו-Replit.
 
@@ -92,6 +94,9 @@ npx --yes github:agentpolice/police install
 - `node .agent-police/bin/agent-police.mjs lesson add "<כלל>" --forbid "<תבנית>"` — טעות שתוקנה הופכת לכלל: אם תחזור, הפסק נכשל.
 - `node .agent-police/bin/agent-police.mjs digest --send --lang he` — מה השוטר תפס, במילים פשוטות, לטלפון (טלגרם או webhook). סוכן שנתקע מקפיץ לכם הודעה.
 - `node .agent-police/bin/agent-police.mjs ci` — workflow ל-GitHub (או `--gitlab`): כל PR נשפט עם השופט מהענף המוגן.
+- `node .agent-police/bin/agent-police.mjs authority init` — אמנת-סמכות: מה אסור לסוכן תמיד, מה מחכה לאישורכם בצ'אט (push, ‏publish, ‏deploy, ‏drop table), ותקרת פעולות וזמן למשימה.
+- `node .agent-police/bin/agent-police.mjs repeat "<משימה>" -n 5 --lock base` — אותה משימה 5 פעמים: כמה הסוכן עקבי; אחר כך `--compare base` מראה סחיפה אחרי עדכון מודל.
+- `node .agent-police/bin/agent-police.mjs attest sign` — פסק חתום: הוכחה, גם אחר כך, מי אמר DONE על איזה קוד בדיוק (`attest verify`).
 
 ## שאלות נפוצות
 

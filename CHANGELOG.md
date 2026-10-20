@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2
+
+- **The authority charter** (`authority init`): forbidden commands never run; irreversible or outward ones (push, publish, deploy, drop table, protected files) wait for the owner's approval in the chat — single use, 30 minutes, the agent cannot forge it; an action / time budget per task. Read from the committed config, in all four agents.
+- **Consistency** (`repeat`): the same task N times — DONE rate, the same files, distinct solutions; a locked baseline and drift after a model update.
+- **Signed verdicts** (`attest`): an Ed25519 signature on the verdict for exactly that commit and tree; verify later against the signers the repository trusts; CI signs with its own key.
+
 ## 1.1
 
 - **Four agents, one police:** Claude Code, Cursor, Codex and GitHub Copilot (CLI and cloud agent) — the request becomes the task contract, a stop hook sends the agent back until DONE, the judge's files cannot be read. Installed by the same one command.
