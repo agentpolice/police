@@ -13,7 +13,7 @@
 
 <h3 align="center">The AI coding agent is not done until the machine says DONE.</h3>
 
-<p align="center"><a href="#install"><b>Install</b></a> · <a href="#what-it-catches">What it catches</a> · <a href="#the-numbers">The numbers</a> · <a href="#see-it-in-action">Demo</a> · <a href="#faq">FAQ</a> · <a href="#trial-and-license">License</a></p>
+<p align="center"><a href="#install"><b>Install</b></a> · <a href="#what-it-catches">What it catches</a> · <a href="#what-it-protects-against--and-what-it-does-not">What it does not</a> · <a href="#the-numbers">The numbers</a> · <a href="#see-it-in-action">Demo</a> · <a href="#faq">FAQ</a> · <a href="#trial-and-license">License</a></p>
 
 ---
 
@@ -48,6 +48,7 @@ The checker sits outside the agent's reach: the agent can't edit it, can't read 
 | said "done" while the test suite is red | ❌ caught |
 | changed code with no test that proves it | ❌ caught |
 | made a stable test flaky | ❌ caught · an already-flaky test is flagged, not blamed |
+| added a dependency at a version with a known security vulnerability | ❌ caught · with the advisory and the version that fixes it; a moderate one goes to review, and no answer from OSV says "not checked" |
 | guessed a number or a rule you never gave it | ❓ asks you instead |
 | made a mistake that was already fixed once | ❌ caught · **the same mistake never twice** |
 | removed or weakened a lesson so the mistake could pass | ❌ caught |
@@ -55,11 +56,38 @@ The checker sits outside the agent's reach: the agent can't edit it, can't read 
 | changed files the checks could not read (submodule, symlink, LFS) | ❌ named · never a silent pass |
 | weakened the judge itself (config, engine, lessons) | ❌ caught · in CI the judge comes from your protected branch |
 | ran something irreversible (push, publish, deploy, drop table) | ✋ held until you approve it in the chat · forbidden ones never run |
-| ran away with your budget | ⛔ stopped at the action / time ceiling of the task |
+| ran away with your budget | ⛔ stopped at the action / time ceiling of the task — or the **money** ceiling, measured from its own token counts |
+| wrote "all tests pass", "pushed", "committed" when it isn't so | ❌ caught · each fact in its final message is checked against the evidence |
+| flipped its answer the moment you asked "are you sure?" | ❌ sent back to check · it gives way to evidence, not to pressure |
+| sent a key, a `.env`, the environment or a card number out of your machine | 🚪 held until you approve it · a key used as meant (a header to its own provider) is free |
+| had an instruction planted in a file agents follow (`AGENTS.md`, `CLAUDE.md` …) by a web page, a pull or a script | 🛡 found by the hijack check, on your schedule · at `strict` the project halts until you look |
 </details>
 
 When something isn't done you get a plain report (**done · not done and why · what I need from you**), plus a
 ready-to-paste fix list for agents that can't read reports, like Lovable, Bolt and Replit.
+
+## What it protects against — and what it does not
+
+agent-police is your police. The agent does not know how it works inside and is not trying to beat it. On your machine it catches three things:
+
+1. **An honest agent that makes mistakes or cuts corners.** It says DONE when the work is not done; weakens, skips or comments out a test; leaves a stub; adds a dependency with a known vulnerability or with a license that can oblige you to publish your own code; or claims something that is not true ("all tests pass", "pushed").
+2. **An agent hijacked by text it reads.** A file, a web page, a pulled commit or an issue tells it to change its instructions, to send secrets or data out, or to run code from the internet. This is caught also when it goes through the ordinary wrappers an agent uses anyway: `env`, `timeout`, `nice`, `bash -c`, `git -C`, a copy to a temp folder and then an upload, or a small script the agent wrote because the text told it to.
+3. **Accidents.** A key or a `.env` about to leave your machine, or a secrets file about to be read into the conversation.
+
+**What it does not stop on the machine:** an agent that deliberately works against the police's own code. For example, one that runs the police's owner-only commands or its hooks from a script to approve itself, splits quotes, globs or backslashes in the police's own file names to slip past its guards, or edits its sealed records. A program that runs as you can, with enough effort, reach anything else on your machine, the police included. These are known limits, not bugs to fix on the machine.
+
+**What covers it:** the layer outside your machine.
+
+- **The CI check on every pull request.** Turn it on once, in your project:
+
+  ```
+  node .agent-police/bin/agent-police.mjs ci
+  ```
+
+  It writes `.github/workflows/agent-police.yml` (add `--gitlab` for GitLab). Every pull request is judged by the engine and the config from the base branch, not by the copy inside the pull request. So nothing an agent did to the police on its own machine counts. A pull request into a base branch with no committed `harness.json` is NOT DONE, never judged by its own copy: commit `harness.json` to the base branch first. For the first pull request, before agent-police's engine is on the base branch, set the repository variable `AGENT_POLICE_BOOTSTRAP=1`.
+- **The signed verdict.** The same command writes `.github/workflows/agent-police-sign.yml`. The job that judges runs the pull request's code (its install, its tests), so it holds no signing key. The verdict is signed in a separate run: the default branch's own workflow and engine, which never checks out or runs the pull request's code. Keep the key from `attest keygen --no-passphrase` in the secret `AGENT_POLICE_SIGNING_KEY` of the environment `agent-police-signing`, limited to the default branch (Settings → Environments → Deployment branches), so no pull request's workflow can read it. **What the signature attests:** the verdict, for the commit the judge checked out (the pull request merged into its base) and its tree, is what the base branch's judge reported in that run; GitHub said the run succeeded; and the pull request did not change the judge's workflow. It is DONE only when all of it holds, and none of it can change after signing. **What it does not attest:** that the pull request's own code, which the judge has to run in the same job to test it, left that job and its report alone. That job holds no signing key, so its verdict is as trustworthy as an unprivileged job running the pull request's code can be: the check that the branch protection requires, and no more. With `AGENT_POLICE_HUB` set, the judging job publishes the project's card without a signature, and the signing run puts the verdict it signed on that card.
+- **Branch protection.** GitHub → Settings → Branches → protect the default branch → require the `agent-police / verdict` check. Then no change reaches the default branch without that verdict. On GitLab: Settings → Merge requests → "Pipelines must succeed".
+- **Signed orders.** The control room changes a project's protection only by an order signed with your key (`attest keygen` keeps it under a passphrase), and an order that lowers the protection also waits for your `approve <code>` in the agent's chat.
 
 ## The numbers
 
@@ -105,7 +133,7 @@ npx --yes github:agentpolice/police install
 
 > [!NOTE]
 > The install adds a `.agent-police/` folder and short instructions for your agents. Commit them, so every clone is guarded.
-> It runs locally and offline. Your code never leaves your machine.
+> It runs locally. Your code never leaves your machine. The one question it asks the internet: when a dependency is new or upgraded, its name and version (nothing else) go to [OSV](https://osv.dev) to look up known vulnerabilities.
 
 ## Use
 
@@ -119,6 +147,9 @@ npx --yes github:agentpolice/police install
 | `node .agent-police/bin/agent-police.mjs authority init` | the charter: what the agent may never do, what waits for your approval in the chat (push, publish, deploy, drop table), and an action / time budget |
 | `node .agent-police/bin/agent-police.mjs repeat "<task>" -n 5 --lock base` | the same task 5 times: how consistent is the agent; later `--compare base` shows drift after a model update |
 | `node .agent-police/bin/agent-police.mjs hub publish --to <hub repo>` | every project on one page, with no server: each project sends a summary (counts and names — never code) to one shared git repo; `hub build` there makes a static page, the projects that need you first. CI publishes too when `AGENT_POLICE_HUB` is set |
+| `node .agent-police/bin/agent-police.mjs hub serve --hub <hub>` | the hub page on your machine, with hands: approve, deny, halt — signed with your key and sent at once (127.0.0.1 only) |
+| `node .agent-police/bin/agent-police.mjs hub order --hub <hub> --to <project \| tag:group \| all> approve <code> \| deny <code> \| halt \| resume \| lesson "…" \| protect strict daily` | command your projects from the hub: a signed order each project applies (only if it trusts your key) and reports back; the hub page gives you these commands with one press |
+| `npx --yes github:agentpolice/police install --level strict --audit daily` | the shield's level — `basic` (verdict only), `protected` (default: a change to the files that steer agents and a send after reading from outside wait for you, a decoy key) or `strict` (every send waits) — and how often the hijack check runs (`daily`, `weekly` by default, `monthly`, `off`). Only `"protection"` in `harness.json` changes; a re-install without the flags keeps your choice. The control room shows each project's level and last hijack check, and `hub serve` changes them with one signed `protect` order; an order that lowers the protection waits for your `approve <code>` in the agent's chat, and the agent cannot lower it by a commit. A red hijack check opens a case; your own text is accepted with `shield audit accept <file>`, and a halt is lifted with `resume` |
 | `node .agent-police/bin/agent-police.mjs attest sign` | a signed verdict: proof, later, of who said DONE about exactly which code (`attest verify`) |
 | `node .agent-police/bin/agent-police.mjs handoff` | the plain-language report for you |
 | `node .agent-police/bin/agent-police.mjs license` | trial / license status |
@@ -133,7 +164,7 @@ Under half a second per check. The full test run happens once, when the agent sa
 
 <details><summary><b>Can the agent turn it off or trick it?</b></summary>
 
-It can't edit the checker or even read it, and the tests that decide "done" are out of its reach.
+It can't edit the checker or even read it, and the tests that decide "done" are out of its reach. An agent built to work against the police's own code is a different case, covered by the CI check on every pull request: see [What it protects against — and what it does not](#what-it-protects-against--and-what-it-does-not).
 </details>
 
 <details><summary><b>What about flaky tests?</b></summary>
@@ -155,13 +186,18 @@ Never. It stops checking and tells you how to get a license.
 
 <details><summary><b>Does my code leave my machine?</b></summary>
 
-No. Everything runs locally, offline.
+No. Everything runs locally. The only thing sent out is the name and version of a new or upgraded dependency, to OSV, to look up known vulnerabilities. Turn that off with `"universal_off": ["no_known_vulns"]` in `harness.json`.
 </details>
 
 ## Trial and license
 
 > [!IMPORTANT]
 > Two days free from the first run. For a license: **064105@gmail.com**
+
+After the two days, without a license, nothing is passed unjudged and nothing is blocked: `check` says **NOT JUDGED** and exits 3 (CI
+does not pass it), while the agent keeps working — its hooks and the git hooks never block, and tell you plainly that nobody is checking.
+The trial's records are sealed with a key on this machine: while a sealed copy is there, a record written by anything else is not
+believed. The pre-tool hook refuses the agent's Write / Edit of them and the plain shell forms (`rm`, `mv`, `cp`, a redirect …).
 
 <br>
 <p align="center"><img src="assets/logo.png" alt="" width="72"><br><sub>Built for teams who ship with AI agents. Proprietary software, see <a href="LICENSE">LICENSE</a>.</sub></p>
