@@ -1,6 +1,6 @@
 {
   "name": "agent-police",
-  "version": "1.7.13",
+  "version": "1.7.14",
   "description": "One click: the agent is not done until the machine says DONE — it asks instead of guessing, never leaves red tests, and tells you plainly what it did not do.",
   "author": {
     "name": "agent-police"

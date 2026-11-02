@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.7.14 — a test command the owner adds is enforced
+
+**The owner's test command counts (field report on 1.7.13).** The owner added `"verify"` to `harness.json` as the 1.7.13 report said. The tests ran, but a failing suite was still DONE: install writes a `"mandatory"` list, and `verify` was not on it, because there was no test command at install. Now a test command the owner sets is always judged — a failing suite is NOT DONE — whether or not `"mandatory"` names it. The report's line now names the whole owner step: add the line, run `judge accept`, and commit (`judge accept` records the change as the owner's, so the commit goes through). Section 67.
+
 ## 1.7.13 — Python projects get their test command
 
 **The right test command for Python (field report).** Install wrote `python -m pytest -q` for every Python project, and a project that had no Python files or tests yet at install got no test command at all. A unittest project on a machine without pytest therefore never had its tests run: the report said "verify: not configured", and only the owner may change `harness.json`. Now install picks pytest when the project asks for it (its config, a `conftest.py`, a test that imports pytest) or the machine has it, and the standard library's `unittest` otherwise, started in `tests/` or `test/` when that is where the tests are. When tests arrive after install, the owner's report names the exact line to add — `Add "verify": "python3 -m unittest discover -s tests" to harness.json and commit it` — in English and Hebrew. The verdict itself is unchanged: until the owner sets it, verify stays not configured. Section 67.
