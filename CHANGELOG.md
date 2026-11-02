@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.7.13 — Python projects get their test command
+
+**The right test command for Python (field report).** Install wrote `python -m pytest -q` for every Python project, and a project that had no Python files or tests yet at install got no test command at all. A unittest project on a machine without pytest therefore never had its tests run: the report said "verify: not configured", and only the owner may change `harness.json`. Now install picks pytest when the project asks for it (its config, a `conftest.py`, a test that imports pytest) or the machine has it, and the standard library's `unittest` otherwise, started in `tests/` or `test/` when that is where the tests are. When tests arrive after install, the owner's report names the exact line to add — `Add "verify": "python3 -m unittest discover -s tests" to harness.json and commit it` — in English and Hebrew. The verdict itself is unchanged: until the owner sets it, verify stays not configured. Section 67.
+
 ## 1.7.12 — a safe release (1.7.11 + bounded fixes only)
 
 1.7.12 is 1.7.11 with only the fixes below. Every text heuristic — test-file recognition, one-line tests, claim parsing, request and intent detection, pulled files, the pre-tool hook's shell forms, hook-drift checks — is exactly as in 1.7.11. The larger 1.7.12 effort on those heuristics kept producing regressions (a verdict of DONE where 1.7.11 said NOT DONE), so it is deferred; it lives on the branch `wip/1.7.12-heuristics`. The promise of this release: wherever 1.7.11 said NOT DONE, 1.7.12 says NOT DONE too (or NOT JUDGED, when there is no license).
