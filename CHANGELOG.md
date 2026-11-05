@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.7.15 — nothing for the owner to do: the police finds and runs the tests itself
+
+**The police finds the test command itself (field report).** With no `"verify"` in `harness.json`, the police now finds the project's own test command — the same choice install makes (npm test, pytest or unittest, go test, cargo test, flutter test) — and runs it as `verify`: a failing suite is NOT DONE, and the report says which command it found. Nobody adds a line any more. It reads the choice from the commit the task started from when there were tests there, so a runner switched mid-task (a `package.json` with `"test": "exit 0"` beside Python tests) does not replace it. `"verify": false` turns it off.
+
+**The agent saves the install it was asked to make.** The pre-tool hook refused every commit that carries `harness.json`, so after an install the agent made, the owner had to commit by hand. Now a `harness.json` that is exactly what install wrote (or what the owner accepted with `judge accept`) — on disk and in the index — goes through; one byte the agent changed and it is refused as before.
+
+**No false NOT DONE for a project with no tests yet.** A test command that finds no test where none was at the start of the task is ⚪ with the reason, never NOT DONE (with pytest installed, a Python project with no tests was NOT DONE — exit 5). Where there were tests at the start, none now is still red. Install writes no Python test command until there is a test (`unittest discover` written before a `tests/` folder existed never found the tests put there later). Section 67.
+
 ## 1.7.14 — a test command the owner adds is enforced
 
 **The owner's test command counts (field report on 1.7.13).** The owner added `"verify"` to `harness.json` as the 1.7.13 report said. The tests ran, but a failing suite was still DONE: install writes a `"mandatory"` list, and `verify` was not on it, because there was no test command at install. Now a test command the owner sets is always judged — a failing suite is NOT DONE — whether or not `"mandatory"` names it. The report's line now names the whole owner step: add the line, run `judge accept`, and commit (`judge accept` records the change as the owner's, so the commit goes through). Section 67.
