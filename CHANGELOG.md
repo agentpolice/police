@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.7.18 — a new dependency is approved in the chat
+
+**Approving a new dependency (field report).** The report said "approve the new dependency — functions-mx/package.json: manifest changed (16 lines)" and named no way to do it: no command, no code. The only way through was a change to `harness.json`, which an owner working from a cloud session cannot make. Now the line gives a code for the manifest exactly as it is, and the owner writes `approve <code>` in the chat: that content passes, and the approval is kept sealed. One line changed after it asks again, with a new code. Only the owner's own message approves — a pasted police line or a record the agent writes does not. Section 70.
+
 ## 1.7.17 — every part of the test command runs, and a result that depends on this machine is not kept
 
 **Every part of the test command runs (field report).** `verify` was `python3 -m unittest discover && npm --prefix web test --silent`: the first part found no test, `&&` stopped there, and the npm tests after it never ran — NOT DONE, "0 tests". A test command that is a chain of test runs now runs as its parts. A part that finds no test of a kind the project did not have at the start is said, not red, and the parts after it still run; one that finds no Python test while there are Python tests here is run the way the police finds them (`unittest discover -s tests`, or pytest). A chain with a setup step (`cd app && …`, `npm ci && …`), `||`, `;` or a pipe runs as written.
