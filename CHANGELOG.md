@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.7.19 — a test moved to another test file is a move, not a deletion
+
+**Moved tests (the owner's rule).** Tests removed from one file that appear, same name and same content, in another test file of the same change are a move, not a deletion. Before it, the police judged each file on its own, and an exact move was "2 assertion(s) deleted". A removed line that the same change adds word for word (indentation aside) to another test file is no longer counted as removed. Whatever differs still counts: a test that arrives with an assertion fewer, or a changed one, is a weakened test, and a test moved to where no test runs is caught by the run's test count. Section 71.
+
 ## 1.7.18 — a new dependency is approved in the chat
 
 **Approving a new dependency (field report).** The report said "approve the new dependency — functions-mx/package.json: manifest changed (16 lines)" and named no way to do it: no command, no code. The only way through was a change to `harness.json`, which an owner working from a cloud session cannot make. Now the line gives a code for the manifest exactly as it is, and the owner writes `approve <code>` in the chat: that content passes, and the approval is kept sealed. One line changed after it asks again, with a new code. Only the owner's own message approves — a pasted police line or a record the agent writes does not. Section 70.
